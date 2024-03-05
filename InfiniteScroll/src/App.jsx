@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React,{useState,useRef,useCallback} from 'react'
+import useBookSearch from './useBookSearch'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [query,setQuery] = useState('');
+  const [pageNumber,setPageNumber] = useState(1);
+  const {loading,error,books,hasMore} =  useBookSearch(query,pageNumber)
+  const observer = useRef();
+  
+  const lastBookElementRef = useCallback(node=>{
+    if(loading) return
+    if(observer.current) observer.current.disconnect();
 
+    observer.current = new IntersectionObserver(entry=>{
+      if(entry[0].isIntersecting && hasMore){
+        setPageNumber((prevPageNumber)=>{
+          return prevPageNumber + 1
+        })
+      }
+    })
+
+
+    if(node) observer.current.observe(node);
+  },[loading,hasMore])
+
+
+  function handleSearch(e){
+    setQuery(e.target.value);
+    setPageNumber(1);
+  }
+
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <input value={query} onChange={handleSearch} type="text" name="" id="" />
+      {
+        books.map((book,index)=>{
+          if(books.length === index+1){
+            return <div ref={lastBookElementRef} key={book}>{book}</div>
+          }
+          return <div key={book}>{book}</div>
+        })
+      }
+      <div>{loading?"Loading...":""}</div>
+      <div>{error?"Error":""}</div>
     </>
   )
 }
