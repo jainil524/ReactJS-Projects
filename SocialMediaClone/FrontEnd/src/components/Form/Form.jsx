@@ -1,14 +1,14 @@
 import React from 'react'
 
-function Form({ actionUrl, method, children, onSubmit}) {
+function Form({ actionUrl, method,id=null,classes=[], children=[], onSubmit=null}) {
 
     let formAttributes = {
         action: actionUrl,
         method: method,
-        onSubmit: onSubmit
+        onSubmit: onSubmit,
+        id: id,
+        className: classes.join(" ")
     };
-
-
 
     return (
         <form {...formAttributes}>
