@@ -2,12 +2,7 @@
 import React, { useState } from 'react';
 import "./assets/css/Input.css";
 
-function Input({ label = null, type, placeholder, id = null, classes = [], value, error }) {
-    const [inputValue, setInputValue] = useState(value);
-
-    const handleChange = (e) => {
-        setInputValue(e.target.value);
-    };
+function Input({ label = null, type, placeholder, id = null, change, classes = [], value, error=null }) {
 
     return (
         <div className="input-wrapper">
@@ -17,10 +12,10 @@ function Input({ label = null, type, placeholder, id = null, classes = [], value
                 type={type}
                 placeholder={placeholder}
                 className={classes.join(' ')}
-                value={inputValue}
-                onChange={handleChange}
+                value={value}
+                onChange={(e)=> change(prev => e.target.value)}
             />
-            {error && <span className="error">{error}</span>}
+            {error!=null?<span className="error">{error}</span>:null}
         </div>
     );
 }

@@ -1,4 +1,3 @@
-
 function useFieldValidator(Fields) {
     
     let FieldFunction = {
@@ -22,7 +21,6 @@ function useFieldValidator(Fields) {
 function validateEmail(email) {
     // Regular expression for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (email.length === 0) return "Email is required";
 
     // Check if the email matches the regular expression
@@ -34,7 +32,6 @@ function validateEmail(email) {
     return true;
 }
 
-// write code for strong password validation which includes atleast 1 uppercase, 1 lowercase, 1 number, 1 special character and minimum length of 8 characters and make the each validation error return on fail
 function passwordValidator(password) {
 
     if (password.length === 0) return "Password is required";
