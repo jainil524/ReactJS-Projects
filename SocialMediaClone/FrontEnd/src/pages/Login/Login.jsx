@@ -1,18 +1,28 @@
 // Login.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Input from '../../components/Form/InputBox/Input';
 import SubmitButton from '../../components/Form/SubmitButton/SubmitButton';
 import Form from '../../components/Form/Form';
 import fetchRequest from '../../util/fetchAPIRequest';
 import useFieldValidator from './hooks/useFieldValidator';
-import { useNavigate } from 'react-router-dom';
+import {UserContext} from '../../contexts/UserContext';
+import { useEffect } from 'react';
 
 function Login() {
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
+    const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let userDetails = { username: Email.split("@")[0], email: Email}
+        localStorage.setItem("user",userDetails.username);
+        setUser(userDetails);
+    }, [Email]);
 
     function handleSubmit(e, setFormError) {
         e.preventDefault();
@@ -42,7 +52,7 @@ function Login() {
                 setFormError(data.error);
             }else{
                 console.log("Login Successfull");
-                navigate("/dashboard",{replace:true, state:{user:data.username}});
+                navigate("/"); // Redirect to home page
             }
 
 
