@@ -11,7 +11,7 @@ function App() {
       <UserContextProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<IndexLayout />}/>
+          <Route path="/*" element={<IndexLayout />}/>
         </Routes>
       </UserContextProvider>
     </>

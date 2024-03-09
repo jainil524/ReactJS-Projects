@@ -5,6 +5,7 @@ import { Outlet, Route, Routes, useNavigate } from 'react-router-dom'
 import SearchPost from '../pages/Search/SearchPost';
 import AddPost from '../pages/addPost/AddPost';
 import Profile from '../pages/Profile/Profile';
+import Notification from '../pages/Notification/Notification';
 
 function IndexLayout() {
   const navigate = useNavigate();
