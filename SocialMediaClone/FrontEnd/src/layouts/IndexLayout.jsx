@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar'
 import Feeds from '../pages/Feeds/Feeds'
-import { Outlet, Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import SearchPost from '../pages/Search/SearchPost';
 import AddPost from '../pages/addPost/AddPost';
 import Profile from '../pages/Profile/Profile';

@@ -1,0 +1,95 @@
+.skeleton {
+    background-color: #f0f0f0;
+    /* Background color for the skeleton */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.skeleton .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.skeleton .profile-pic {
+    width: 50px;
+    /* Adjust size as needed */
+    height: 50px;
+    /* Adjust size as needed */
+    border-radius: 50%;
+    /* Make it round */
+    background-color: #ccc;
+    /* Placeholder color */
+    margin-right: 10px;
+}
+
+.skeleton .username {
+    width: 100px;
+    /* Adjust width as needed */
+    height: 20px;
+    /* Adjust height as needed */
+    background-color: #ccc;
+    /* Placeholder color */
+}
+
+.skeleton .post-title {
+    width: 100%;
+    /* Full width */
+    height: 30px;
+    /* Adjust height as needed */
+    background-color: #ccc;
+    /* Placeholder color */
+    margin-bottom: 15px;
+}
+
+.skeleton .post-body {
+    width: 100%;
+    /* Full width */
+    height: 100px;
+    /* Adjust height as needed */
+    background-color: #ccc;
+    /* Placeholder color */
+    margin-bottom: 15px;
+}
+
+.skeleton .post-tags {
+    margin-bottom: 15px;
+}
+
+.skeleton .tag {
+    display: inline-block;
+    width: 80px;
+    /* Adjust width as needed */
+    height: 20px;
+    /* Adjust height as needed */
+    background-color: #ccc;
+    /* Placeholder color */
+    margin-right: 5px;
+}
+
+.skeleton .post-info {
+    display: flex;
+    align-items: center;
+}
+
+.skeleton .reactions-count,
+.skeleton .comments-icon {
+    margin-right: 10px;
+}
+
+.skeleton .comments-icon {
+    cursor: pointer;
+}
+
+.skeleton .comments-icon>svg {
+    width: 20px;
+    /* Adjust size as needed */
+    height: 20px;
+    /* Adjust size as needed */
+}
+
+.skeleton .comments-icon:hover {
+    color: #007bff;
+    /* Change color on hover */
+}
